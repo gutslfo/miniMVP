@@ -1,6 +1,18 @@
-1. Make sure errors are handled properly.
-2. Implement heredoc.
-3. Implement builtins.
-4. Check redirs with parentheses
-5. Check redirs with cd ?
-6. Handle simple redirs without commands
+1. Remove temp file from heredoc in pipes without breaking everything that's working now
+2. Check leaks for existing builtins
+3. Make remaining builtins
+4. Check error management and leaks on errors
+5. It should be possible to call a command using it's absolute path.
+	For example: < file /usr/bin/grep foo is a valid command.
+	+ calling a command this way should bypass the removal of the PATH env variable.
+6. Modify command arguments parsing to not split when encountering '=', or at least make it stick for the export command
+7. Make sure we correctly free the new_env tab
+	At the end of the program
+	In case of an error in related builtins and functions
+8. Change $PWD in case of cd
+9. Investigate and handle $SHLVL and $BASH_SUBSHELL
+10. Implement solo redirs
+11. Check builtin args for unexpected scenarios (example export without any argument prints env in alphabetical order)
+12. Make sure we free envp when an error occurs
+	Maybe distinguish between a full_clean func and a partial_clean func
+13. Subshell

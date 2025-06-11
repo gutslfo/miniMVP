@@ -51,12 +51,12 @@ int	waitpids(int *pids, int cmd_count)
 	return (status);
 }
 
-int	count_nodes(t_ast **child)
+int	count_nodes(t_ast **children)
 {
 	int	i;
 
 	i = 0;
-	while (child[i])
+	while (children[i])
 		i++;
 	return (i);
 }

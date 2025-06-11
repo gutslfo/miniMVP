@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeulema <imeulema@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: pitran <pitran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 00:30:32 by imeulema          #+#    #+#             */
-/*   Updated: 2025/05/13 20:09:55 by imeulema         ###   ########.fr       */
+/*   Updated: 2025/06/10 16:12:13 by pitran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@ void	exec_cmd(t_ast *node, t_cmd cmd)
 {
 	get_cmd_path(&cmd, node->root->paths);
 	if (!cmd.path)
-	{
-		ft_putstr_fd(cmd.args[0], 2);
-		ft_putstr_fd(": command not found\n", 2);
 		exit(1);
-	}
 	if (execve(cmd.path, cmd.args, node->root->envp) == -1)
 		perror("execve");
 }
